@@ -44,8 +44,7 @@ function App() {
     if ((index+1) % 3 !== 0) {
       newArray += letter;
     }
-  }
-  );
+  });
 
   return (
     <div className='App'>

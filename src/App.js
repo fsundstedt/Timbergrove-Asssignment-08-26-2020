@@ -47,29 +47,22 @@ function App() {
   }
   );
 
-  function test() {
-    drinks.map((drink, index) => {
-      console.log(drink)
-    })
-  };
-
-  test()
-
   return (
-    <div className="App">
-      <select>
-        aaa
-        {drinks.length > 0 ? (
-          drinks.map((drink, index) => (
-            <option key={index} value={drink.strDrink}>
-                {drink.strDrink}
-            </option>
-          ))
-        ) : (
-            <div>Shaking / Stirring...</div>
-        )}
-      </select>
-      <div>
+    <div className='App'>
+      <div className='Api'>
+        <select className='SelectBox'>
+          {drinks.length > 0 ? (
+            drinks.map((drink, index) => (
+              <option className='SelectItem' key={index} value={drink.strDrink}>
+                  {drink.strDrink}
+              </option>
+            ))
+          ) : (
+              <option>Shaking / Stirring...</option>
+          )}
+        </select>
+      </div>
+      <div className='Text'>
         <span>
           {newArray}
         </span>

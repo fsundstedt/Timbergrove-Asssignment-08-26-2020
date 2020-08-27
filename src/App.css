@@ -11,16 +11,38 @@
   justify-content: center;
 }
 
+.Button {
+  -webkit-appearance: none;
+  padding: 1%;
+  border-radius: 0px 2px 0px 0px;
+  color: rgba(14, 43, 87);
+  background-color: white;
+  box-shadow: 1px 1px rgba(14, 43, 87, 0.6);
+}
+
+.Button:active, .Button:focus {
+  -webkit-appearance: none;
+  outline: none;
+}
+
+.Instructions {
+  margin-top: 5%;
+}
+
 .SelectBox {
   -webkit-appearance: none;
   padding: 1%;
   width: 200px;
-  border-radius: 2px 2px 0px 0px;
+  border-radius: 2px 0px 0px 0px;
   color: white;
   background-color: rgba(14, 43, 87);
   box-shadow: 1px 1px rgba(14, 43, 87, 0.6);
 }
 
+.SelectBox:focus {
+  -webkit-appearance: none;
+  outline: none;
+}
 
 .SelectItem {
   text-align: center;

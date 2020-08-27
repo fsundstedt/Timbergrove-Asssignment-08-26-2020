@@ -3,6 +3,8 @@ import './App.css';
 
 function App() {
   const [drinks, setDrinks] = useState([]);
+  const [selectedDrink, setSelectedDrink] = useState();
+  const [showInstructions, setShowInstructions] = useState(false);
 
   async function getData() {
     const response = await fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita',{
@@ -16,6 +18,7 @@ function App() {
     const fetchData = async () => {
       const result = await getData();
       setDrinks(result.drinks);
+      setSelectedDrink(result.drinks[0].strInstructions)
     };
     fetchData();
     return;
@@ -46,13 +49,22 @@ function App() {
     }
   });
 
+  function changeBeverage(beverage) {
+    setSelectedDrink(beverage);
+    setShowInstructions(false);
+  };
+
+  function viewInstructions() {
+    setShowInstructions(true);
+  };
+
   return (
     <div className='App'>
       <div className='Api'>
-        <select className='SelectBox'>
+        <select className='SelectBox' onChange={(e) => changeBeverage(e.target.value)}>
           {drinks.length > 0 ? (
             drinks.map((drink, index) => (
-              <option className='SelectItem' key={index} value={drink.strDrink}>
+              <option className='SelectItem' key={index} value={drink.strInstructions}>
                   {drink.strDrink}
               </option>
             ))
@@ -60,6 +72,10 @@ function App() {
               <option>Shaking / Stirring...</option>
           )}
         </select>
+        <button className='Button' onClick={() => viewInstructions()}>Get Instructions</button>
+      </div>
+      <div className='Instructions'>
+          {showInstructions ? selectedDrink : ''}
       </div>
       <div className='Text'>
         <span>
